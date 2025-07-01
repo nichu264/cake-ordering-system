@@ -4,24 +4,29 @@ const { open } = require('sqlite');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs'); // Import the File System module
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 // --- Serve Static Frontend Files ---
-// This serves all files in the current directory (e.g., index.html, style.css)
 app.use(express.static(path.join(__dirname)));
 
 // --- Dynamic Port & Database Path ---
 const PORT = process.env.PORT || 3000;
-// Use a persistent storage path provided by the hosting service
 const DB_PATH = process.env.RENDER ? '/var/data/database.db' : './database.db';
 
 let db;
 
 // --- Database Setup ---
 async function initializeDatabase() {
+    // **FIX: Ensure the directory for the database exists before opening it**
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+        fs.mkdirSync(dbDir, { recursive: true });
+    }
+
     db = await open({
         filename: DB_PATH,
         driver: sqlite3.Database
@@ -43,7 +48,7 @@ async function initializeDatabase() {
             FOREIGN KEY (user_id) REFERENCES users (id)
         );
     `);
-    console.log('Database initialized successfully.');
+    console.log(`Database initialized successfully at ${DB_PATH}`);
 }
 
 // --- API Endpoints (No changes needed here) ---
@@ -120,7 +125,7 @@ app.listen(PORT, async () => {
         await initializeDatabase();
         console.log(`伺服器正在 http://localhost:${PORT} 上運行`);
     } catch (error) {
-        console.error("Failed to initialize database:", error);
+        console.error("Failed to initialize and start server:", error);
         process.exit(1);
     }
 });
