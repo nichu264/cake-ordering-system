@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雞蛋糕訂購系統</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 使用者區塊 -->
+        <div id="user-section">
+            <div id="auth-forms">
+                <div id="login-form">
+                    <h3>登入</h3>
+                    <input type="text" id="login-username" placeholder="使用者名稱" required>
+                    <input type="password" id="login-password" placeholder="密碼" required>
+                    <button id="login-btn" class="btn-auth">登入</button>
+                    <p>沒有帳號？ <a href="#" id="show-register">點此註冊</a></p>
+                </div>
+                <div id="register-form" class="hidden">
+                    <h3>註冊</h3>
+                    <input type="text" id="register-username" placeholder="使用者名稱" required>
+                    <input type="password" id="register-password" placeholder="密碼" required>
+                    <button id="register-btn" class="btn-auth">註冊</button>
+                    <p>已有帳號？ <a href="#" id="show-login">點此登入</a></p>
+                </div>
+                <hr>
+                <button id="guest-mode-btn" class="btn-secondary">以訪客身分繼續</button>
+            </div>
+            <div id="user-info" class="hidden">
+                <p>歡迎, <span id="user-display-name"></span>!</p>
+                <button id="logout-btn" class="btn-secondary">登出</button>
+                <button id="show-history-btn" class="btn-secondary">查看歷史訂單</button>
+            </div>
+        </div>
+
+        <h1>雞蛋糕訂購系統</h1>
+
+        <!-- 訂購主體 (登入或訪客模式後顯示) -->
+        <div id="main-content" class="hidden">
+            <!-- 固定菜單 -->
+            <div class="menu-section">
+                <h2>固定菜單 (每份5顆)</h2>
+                <div id="fixed-menu"></div>
+            </div>
+
+            <!-- 自訂組合 -->
+            <div class="menu-section">
+                <h2>自訂組合</h2>
+                <button id="show-customizer-btn" class="btn-primary">＋ 新增自訂組合</button>
+            </div>
+
+            <!-- 購物車 -->
+            <div class="cart">
+                <h2>購物車</h2>
+                <ul id="cart-items"></ul>
+                <p>總金額: <span id="total-price">0</span> 元</p>
+                <button id="checkout-btn">結帳</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自訂組合 Modal (內容不變，保持原樣) -->
+    <div id="customizer-modal" class="modal-backdrop hidden">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="close-btn">&times;</button>
+            <h3>建立您的專屬組合</h3>
+            <div class="global-quantity-controls">
+                <button id="decrement-all-btn" class="btn-secondary">全部-1</button>
+                <button id="increment-all-btn" class="btn-secondary">全部+1</button>
+            </div>
+            <div id="flavor-options"></div>
+            <div class="custom-combo-actions">
+                <label for="combo-sets">份數:</label>
+                <div class="quantity-control">
+                    <button class="quantity-btn" data-action="decrement">-</button>
+                    <input type="number" id="combo-sets" value="1" min="1">
+                    <button class="quantity-btn" data-action="increment">+</button>
+                </div>
+                <button id="add-custom-combo-to-cart-btn" class="btn-primary">加入購物車</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 歷史訂單 Modal (內容不變，保持原樣) -->
+    <div id="history-modal" class="modal-backdrop hidden">
+        <div class="modal-content">
+            <button id="close-history-btn" class="close-btn">&times;</button>
+            <h3>您的歷史訂單</h3>
+            <div id="order-history-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

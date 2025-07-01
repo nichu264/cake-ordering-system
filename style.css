@@ -1,0 +1,123 @@
+/* General Body and Container */
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #333;
+}
+
+/* User Authentication Section */
+#user-section {
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+#auth-forms input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn-auth {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+}
+
+#auth-forms p {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+#auth-forms hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #ddd;
+}
+
+#user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#user-info p {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary, .btn-auth {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Make all buttons full width */
+}
+
+.btn-primary { display: block; padding: 12px; background: #333; color: #fff; }
+.btn-primary:hover { background: #e8491d; }
+
+.btn-secondary { padding: 10px; background: #6c757d; color: white; }
+.btn-secondary:hover { background: #5a6268; }
+
+#user-info .btn-secondary { width: auto; } /* Override for user info buttons */
+
+/* Menu and Cart */
+.menu-section { margin-bottom: 35px; }
+#fixed-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+.menu-item { background: #f9f9f9; padding: 15px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
+.menu-item-info h3 { margin: 0 0 5px 0; }
+.menu-item-info .price { font-weight: bold; color: #e8491d; }
+
+.quantity-control { display: flex; align-items: center; }
+.quantity-control input { width: 50px; text-align: center; border: 1px solid #ddd; border-radius: 4px; margin: 0 5px; }
+.quantity-btn { background: #555; color: #fff; border: none; cursor: pointer; border-radius: 4px; padding: 5px 10px; width: auto; }
+
+.cart ul { list-style: none; padding: 0; }
+.cart li { background: #f9f9f9; padding: 12px; margin-bottom: 8px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+.cart li .item-details { white-space: pre-wrap; }
+.cart li .item-price { font-weight: bold; }
+
+/* Modal Styles */
+.modal-backdrop { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: #fff; padding: 30px; border-radius: 8px; width: 90%; max-width: 500px; position: relative; max-height: 80vh; overflow-y: auto; }
+.close-btn { position: absolute; top: 10px; right: 15px; font-size: 28px; font-weight: bold; background: none; border: none; cursor: pointer; width: auto; }
+
+.global-quantity-controls { display: flex; justify-content: flex-end; gap: 10px; margin-bottom: 15px; }
+.global-quantity-controls .btn-secondary { width: auto; }
+
+#flavor-options { display: grid; gap: 15px; margin: 20px 0; }
+.flavor-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #f9f9f9; border-radius: 5px; }
+.custom-combo-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.custom-combo-actions .quantity-control { width: auto; }
+.custom-combo-actions .btn-primary { width: auto; }
+
+/* Order History Modal */
+#order-history-list .order-record { border: 1px solid #ddd; border-radius: 5px; padding: 15px; margin-bottom: 15px; }
+#order-history-list .order-header { font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; display: flex; justify-content: space-between; }
+#order-history-list ul { list-style-type: none; padding-left: 10px; }
+
+.hidden { display: none; }
